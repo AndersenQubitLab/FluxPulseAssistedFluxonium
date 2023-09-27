@@ -13,11 +13,11 @@ In the single qubit gate portion of the project, we provide optimization of a si
 ## Installation
 
 ### Prerequisites
-Python 3.8.8 (or higher)
-NumPy 1.16.6 (or higher)
-SciPy 1.0 (or higher)
-Cython 0.29.20
-QuTiP 4.7.0
+- [Python 3.8.8+]
+- [NumPy 1.16.6+]
+- [SciPy 1.0+]
+- [Cython 0.29.20+]
+- [QuTiP 4.7.0]
 
 ### Cloning the Repository
 Clone this repository to your local machine using [Git]([https://github.com/AndersenQubitLab/FluxPulseAssistedFluxonium.git])

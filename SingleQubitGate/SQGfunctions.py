@@ -20,9 +20,11 @@ import pandas as pd
 N = 30 #Hilbert space size for qubit
 M = 5 #Hilbert space size for resonator
 
+#creation/annihilation operators for qubit
 c = destroy(N)
 cdag = create(N)
 
+#creation/annihilation operators for resonator
 a = destroy(M)
 adag = create(M)
 
@@ -30,18 +32,21 @@ rnum = adag * a
 resonator_num = tensor(qeye(N), rnum)
 
 sweet_spot = 2*np.pi*0.5
-Ej = 2*np.pi*4.75
-Ec = 2*np.pi*1.25
-El = 2*np.pi*1.5
+Ej = 2*np.pi*4.75 #Josephson energy, (2piGHz)
+Ec = 2*np.pi*1.25 #charging energy, (2piGHz)
+El = 2*np.pi*1.5 #inductive energy, (2piGHz)
 
-w = 2*np.pi*7.0 #GHz
+#resonator frequency
+w = 2*np.pi*7.0 #2piGHz
 H_lc = w * (adag * a + 1/2)
 
+#qubit-resonator coupling
 g = 2*np.pi*0.05
 coupling1 = tensor(c, adag)
 coupling2 = tensor(cdag, a)
 H_i = g * (coupling1 + coupling2)
 
+#reduced charge and flux operators
 phi_naught = ((8 * Ec) / El)**(1/4)
 n_op = (-1j / (math.sqrt(2) * phi_naught)) * (c - cdag)
 phi_op = (phi_naught / math.sqrt(2)) * (c + cdag)

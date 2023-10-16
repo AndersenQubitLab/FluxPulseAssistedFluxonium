@@ -20,7 +20,7 @@ In the single qubit gate portion of the project, we provide optimization of a si
 - [QuTiP 4.7.0]
 
 ### Cloning the Repository
-Clone this repository to your local machine using [Git]([https://github.com/AndersenQubitLab/FluxPulseAssistedFluxonium.git])
+Clone this repository to your local machine using [Git](https://github.com/AndersenQubitLab/FluxPulseAssistedFluxonium.git)
 
 ## Other
 [arXiv manuscript](https://arxiv.org/abs/2309.17286)

@@ -52,6 +52,7 @@ def truncate_disshift(hamiltonian, expectoperator):
     return states, energies, frequencies, chi_value, truncated_H
 
 #used in Detuning.ipynb
+
 def truncate_detuning(hamiltonian, expectoperator):
     #sorts eigenvalues and eigenvectors to get the lowest dressed states
     evals, evecs = hamiltonian.eigenstates()
@@ -92,3 +93,27 @@ def truncate_detuning(hamiltonian, expectoperator):
     chi_value = ((Eq1r1 - Eq1r0) - (Eq0r1 - Eq0r0)) / 2
     
     return states, energies, frequencies, chi_value
+
+#used in ResonatorDynamics.ipynb
+
+def SNR(n_readout, kappa, chi, time):
+    epsilon = math.sqrt(n_readout*(chi**2 + (kappa)**2 / 4)) #drive amplitude
+    phi_qb = 2 * math.atan(2 * chi / kappa) #qubit induced phase of output field
+    scaledSNR = []
+    rawSNR = [] #scaled by average photon population of cavity
+    
+    for t in time:
+        M = []
+        tps = np.linspace(0,t,1001)
+        for tp in tps:
+            alpha_plus = epsilon/np.sqrt(kappa)*np.exp(-1j*phi_qb)*(1-2*np.cos(0.5*phi_qb)*np.exp(-1j*chi*tp - 0.5*kappa*tp + 0.5*1j*phi_qb))
+            alpha_minus = epsilon/np.sqrt(kappa)*np.exp(1j*phi_qb)*(1-2*np.cos(0.5*phi_qb)*np.exp(1j*chi*tp - 0.5*kappa*tp - 0.5*1j*phi_qb))
+            M.append(alpha_plus-alpha_minus)
+    
+        SNRnum = np.sqrt(kappa)*abs(np.trapz(M))*np.diff(tps)[0]
+        SNRdenom = math.sqrt(kappa * t)
+        SNR = SNRnum / SNRdenom
+        rawSNR.append(SNR)
+        scaledSNR.append(SNR / math.sqrt(n_readout))
+        
+    return scaledSNR, rawSNR

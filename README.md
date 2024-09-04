@@ -23,4 +23,5 @@ In the single qubit gate portion of the project, we provide optimization of a si
 Clone this repository to your local machine using [Git](https://github.com/AndersenQubitLab/FluxPulseAssistedFluxonium.git)
 
 ## Other
+[Physical Review Applied publication](https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.22.014079)
 [arXiv manuscript](https://arxiv.org/abs/2309.17286)

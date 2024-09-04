@@ -1,4 +1,4 @@
-# Flux Pulse Assisted Readout of Fluxonium
+# Flux Pulse Assisted Readout of a Fluxonium Qubit
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
